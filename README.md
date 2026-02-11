@@ -21,11 +21,28 @@ npx skills add sanyuan0704/code-review-expert
 
 After installation, simply run:
 
-```
+```bash
+# Use default model (gpt-4o)
 /code-review-expert
+
+# Use a specific model
+/code-review-expert --model gpt-4o-mini
+/code-review-expert --model claude-3-5-sonnet
+/code-review-expert --model claude-3-5-haiku
 ```
 
 The skill will automatically review your current git changes.
+
+### Model Selection
+
+Choose the right model for your needs:
+
+| Scenario | Recommended Model | Why |
+|----------|------------------|-----|
+| **Large PR (>500 lines)** | `claude-3-5-sonnet` | Better context handling |
+| **Quick review** | `gpt-4o-mini` or `claude-3-5-haiku` | Faster feedback |
+| **Security-critical** | `gpt-4o` or `claude-3-5-sonnet` | Thorough analysis |
+| **General use** | `gpt-4o` (default) | Balanced performance |
 
 ## Workflow
 

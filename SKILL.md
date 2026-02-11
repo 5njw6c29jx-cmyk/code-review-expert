@@ -9,6 +9,38 @@ description: "Expert code review of current git changes with a senior engineer l
 
 Perform a structured review of the current git changes with focus on SOLID, architecture, removal candidates, and security risks. Default to review-only output unless the user asks to implement changes.
 
+## Model Configuration
+
+This skill supports multiple AI models for different review needs:
+
+| Model | Best For | Speed | Depth |
+|-------|----------|-------|-------|
+| **gpt-4o** (recommended) | Comprehensive reviews, complex codebases | Medium | High |
+| **gpt-4o-mini** | Quick reviews, small changes, fast iteration | Fast | Medium |
+| **claude-3-5-sonnet** | Deep analysis, architectural reviews | Medium | Very High |
+| **claude-3-5-haiku** | Rapid feedback, simple fixes | Very Fast | Medium |
+
+### How to Specify a Model
+
+When invoking the skill, use the `--model` parameter:
+
+```bash
+# Use default recommended model (gpt-4o)
+/code-review-expert
+
+# Use a specific model
+/code-review-expert --model gpt-4o-mini
+/code-review-expert --model claude-3-5-sonnet
+/code-review-expert --model claude-3-5-haiku
+```
+
+### Model Selection Guidelines
+
+- **Large PRs (>500 lines)**: Use `claude-3-5-sonnet` for better context handling
+- **Quick iterations**: Use `gpt-4o-mini` or `claude-3-5-haiku` for faster feedback
+- **Security-critical changes**: Use `gpt-4o` or `claude-3-5-sonnet` for thorough analysis
+- **Daily reviews**: Use `gpt-4o` (default) for balanced performance
+
 ## Severity Levels
 
 | Level | Name | Description | Action |

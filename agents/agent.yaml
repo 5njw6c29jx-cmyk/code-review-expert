@@ -3,5 +3,28 @@ interface:
   short_description: "Senior engineer code review: SOLID, security, performance, error handling"
   default_prompt: "Review current git changes for SOLID violations, security risks, race conditions, error handling issues, performance problems, and boundary condition bugs."
 
-# Agent-agnostic skill - works with any LLM provider.
-# No provider-specific configuration required.
+# Model Configuration
+# You can specify which model to use for code reviews.
+# Supported models include:
+#   - gpt-4o (default) - Best for comprehensive reviews
+#   - gpt-4o-mini - Faster, cost-effective for quick reviews
+#   - claude-3-5-sonnet - Excellent code understanding
+#   - claude-3-5-haiku - Fast alternative
+#
+# To use a specific model, set the model parameter when invoking the skill:
+#   /code-review-expert --model gpt-4o-mini
+#   /code-review-expert --model claude-3-5-sonnet
+#
+# If no model is specified, the system default will be used.
+
+model:
+  # Default model recommendation (override via CLI or API)
+  recommended: "gpt-4o"
+  # Alternative models for different use cases
+  alternatives:
+    - name: "gpt-4o-mini"
+      use_case: "Quick reviews, smaller changes"
+    - name: "claude-3-5-sonnet"
+      use_case: "Deep code analysis, complex refactoring"
+    - name: "claude-3-5-haiku"
+      use_case: "Fast iteration, simple fixes"
